@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "clear":"tsc --build --clean"
+    "clear":"tsc --build --clean",
+    "dev":"tsc -w"
   },
   "dependencies": {
     "@mdi/font": "^7.3.67",

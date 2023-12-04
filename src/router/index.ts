@@ -16,11 +16,6 @@ const routes: Array<RouteRecordRaw> = [
     name: "menu",
     component: () => import("../views/MenuView.vue"),
   },
-  {
-    path: "/horror",
-    name: "horror",
-    component: () => import("../views/BooksView.vue"),
-  },
 ];
 
 const router = createRouter({
