@@ -23,8 +23,7 @@
         @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
       <v-spacer class="hidden-md-and-up"></v-spacer>
-      <v-toolbar-title>{{ "Books" }}</v-toolbar-title>
-      <!-- <v-btn flat to="/menu" class="hidden-sm-and-down">Books</v-btn> -->
+      <v-toolbar-title>{{ appTitle }}</v-toolbar-title>
       <v-spacer class="hidden-sm-and-down"></v-spacer>
     </v-toolbar>
   </span>

@@ -9,7 +9,7 @@
     </div>
     <v-main>
       <v-card>
-        <v-tabs v-model="tab" color="pink-lighten-5">
+        <v-tabs v-model="tab" bg-color="pink-lighten-5">
           <v-tab :value="horror" v-on:click="showBooks('horror')">HORROR</v-tab>
           <v-tab :value="psy" v-on:click="showBooks('psy')">PSYCHOLOGY</v-tab>
           <v-tab :value="phi" v-on:click="showBooks('phi')"
@@ -19,6 +19,10 @@
         <v-window v-model="tab">
           <v-window-item value="horror">
             <v-card>
+              <v-card-text text-caption class="font-italic" v-if="tab === 0">
+                "Ghosts, vampires, aliens, zombies, family drama and so
+                on."</v-card-text
+              >
               <v-container fluid>
                 <v-row>
                   <v-col
@@ -42,6 +46,10 @@
           </v-window-item>
           <v-window-item value="psy">
             <v-card>
+              <v-card-text text-caption class="font-italic" v-if="tab === 1">
+                "Critical psychology, demedicalization and psychoanalytic
+                ideas."</v-card-text
+              >
               <v-container fluid>
                 <v-row>
                   <v-col
@@ -66,6 +74,10 @@
 
           <v-window-item value="phi">
             <v-card>
+              <v-card-text text-caption class="font-italic" v-if="tab === 2">
+                "Historical processes and the way we see the
+                world."</v-card-text
+              >
               <v-container fluid>
                 <v-row>
                   <v-col
