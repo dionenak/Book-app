@@ -8,116 +8,86 @@
       </v-card>
     </div>
     <v-main>
-      <v-card class="mt-3" :elevation="8">
-        <v-toolbar density="compact" color="pink-lighten-5">
-          <v-btn
-            v-on:click="
-              horror = !horror;
-              if (horror) {
-                showBooks('horror');
-              }
-            "
-            >HORROR <v-icon class="ml-3">mdi-heart-search</v-icon></v-btn
+      <v-card>
+        <v-tabs v-model="tab" color="pink-lighten-5">
+          <v-tab :value="horror" v-on:click="showBooks('horror')">HORROR</v-tab>
+          <v-tab :value="psy" v-on:click="showBooks('psy')">PSYCHOLOGY</v-tab>
+          <v-tab :value="phi" v-on:click="showBooks('phi')"
+            >HISTORY & PHILOSOPHY</v-tab
           >
-        </v-toolbar>
-        <v-card v-if="horror !== false">
-          <v-container fluid>
-            <v-row>
-              <v-col
-                v-for="item in horrorBooks"
-                :key="item.title"
-                :title="item.title"
-                :cols="2"
-              >
-                <v-card :href="'https://openlibrary.org/' + item.full_url">
-                  <v-img
-                    :src="item.picture.url.replace('S.jpg', 'M.jpg')"
-                    height="200"
-                    cover
+        </v-tabs>
+        <v-window v-model="tab">
+          <v-window-item value="horror">
+            <v-card>
+              <v-container fluid>
+                <v-row>
+                  <v-col
+                    v-for="item in horrorBooks"
+                    :key="item.title"
+                    :title="item.title"
+                    :cols="2"
                   >
-                    <v-container fill-height fluid>
-                      <v-main fill-height> </v-main> </v-container
-                  ></v-img>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-card>
-      </v-card>
+                    <v-card :href="'https://openlibrary.org/' + item.full_url">
+                      <v-img
+                        :src="item.picture.url.replace('S.jpg', 'M.jpg')"
+                        height="200"
+                        cover
+                      >
+                      </v-img>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-window-item>
+          <v-window-item value="psy">
+            <v-card>
+              <v-container fluid>
+                <v-row>
+                  <v-col
+                    v-for="item in psyBooks"
+                    :key="item.title"
+                    :title="item.title"
+                    :cols="2"
+                  >
+                    <v-card :href="'https://openlibrary.org/' + item.full_url">
+                      <v-img
+                        :src="item.picture.url.replace('S.jpg', 'M.jpg')"
+                        height="200"
+                        cover
+                      >
+                      </v-img>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-window-item>
 
-      <v-card class="mt-3" :elevation="8">
-        <v-toolbar :elevation="8" density="compact" color="pink-lighten-5">
-          <v-btn
-            v-on:click="
-              psy = !psy;
-              if (psy) {
-                showBooks('psy');
-              }
-            "
-            >PSYCHOLOGY <v-icon class="ml-3">mdi-heart-search</v-icon></v-btn
-          >
-        </v-toolbar>
-        <v-card v-if="psy !== false">
-          <v-container fluid>
-            <v-row>
-              <v-col
-                v-for="item in psyBooks"
-                :key="item.title"
-                :title="item.title"
-                :cols="2"
-              >
-                <v-card :href="'https://openlibrary.org/' + item.full_url">
-                  <v-img
-                    :src="item.picture.url.replace('S.jpg', 'M.jpg')"
-                    height="200"
-                    cover
+          <v-window-item value="phi">
+            <v-card>
+              <v-container fluid>
+                <v-row>
+                  <v-col
+                    v-for="item in phiBooks"
+                    :key="item.title"
+                    :title="item.title"
+                    :cols="2"
                   >
-                    <v-container fill-height fluid>
-                      <v-main fill-height> </v-main> </v-container
-                  ></v-img>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-card>
-      </v-card>
-
-      <v-card class="mt-3" :elevation="8">
-        <v-toolbar :elevation="8" density="compact" color="pink-lighten-5">
-          <v-btn
-            v-on:click="
-              phi = !phi;
-              if (phi) {
-                showBooks('phi');
-              }
-            "
-            >HISTORY & PHILOSOPHY
-            <v-icon class="ml-3">mdi-heart-search</v-icon></v-btn
-          >
-        </v-toolbar>
-        <v-card v-if="phi !== false">
-          <v-container fluid>
-            <v-row>
-              <v-col
-                v-for="item in phiBooks"
-                :key="item.title"
-                :title="item.title"
-                :cols="2"
-              >
-                <v-card :href="'https://openlibrary.org/' + item.full_url">
-                  <v-img
-                    :src="item.picture.url.replace('S.jpg', 'M.jpg')"
-                    height="200"
-                    cover
-                  >
-                    <v-container fill-height fluid>
-                      <v-main fill-height> </v-main> </v-container
-                  ></v-img>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-card>
+                    <v-card :href="'https://openlibrary.org/' + item.full_url">
+                      <v-img
+                        :src="item.picture.url.replace('S.jpg', 'M.jpg')"
+                        height="200"
+                        cover
+                      >
+                      </v-img>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-window-item>
+        </v-window>
       </v-card>
     </v-main>
   </v-container>
@@ -139,9 +109,7 @@ export default {
   },
   data() {
     return {
-      horror: false,
-      psy: false,
-      phi: false,
+      tab: null,
     };
   },
   methods: {
@@ -153,8 +121,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.full-height {
-  height: 100%;
-}
-</style>
+<style scoped></style>
