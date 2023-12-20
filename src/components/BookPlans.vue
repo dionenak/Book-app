@@ -7,12 +7,56 @@
         >
       </v-card>
     </div>
-    <v-main>
+
+    <div v-show="notRendered" class="pt-8">
+      <v-row align="center" justify="center">
+        <v-card>
+          <v-img
+            cover
+            height="500"
+            width="304"
+            v-on:click="
+              notRendered = !notRendered;
+              tab = 'psy';
+            "
+            src="https://ia800602.us.archive.org/view_archive.php?archive=/29/items/olcovers648/olcovers648-L.zip&file=6480546-L.jpg"
+          >
+          </v-img>
+        </v-card>
+        <v-card>
+          <v-img
+            cover
+            height="500"
+            width="304"
+            v-on:click="
+              notRendered = !notRendered;
+              tab = 'horror';
+            "
+            src="https://ia801401.us.archive.org/view_archive.php?archive=/32/items/l_covers_0008/l_covers_0008_56.tar&file=0008569292-L.jpg"
+          >
+          </v-img>
+        </v-card>
+        <v-card>
+          <v-img
+            cover
+            height="500"
+            width="304"
+            v-on:click="
+              notRendered = !notRendered;
+              tab = 'phi';
+            "
+            src="https://ia804703.us.archive.org/view_archive.php?archive=/9/items/l_covers_0012/l_covers_0012_68.zip&file=0012680311-L.jpg"
+          >
+          </v-img>
+        </v-card>
+      </v-row>
+    </div>
+    <v-main v-show="!notRendered">
       <v-card>
         <v-tabs v-model="tab" bg-color="pink-lighten-5">
-          <v-tab :value="horror" v-on:click="showBooks('horror')">HORROR</v-tab>
-          <v-tab :value="psy" v-on:click="showBooks('psy')">PSYCHOLOGY</v-tab>
-          <v-tab :value="phi" v-on:click="showBooks('phi')"
+          <v-tab :value="horror" :v-pre="showBooks('horror')">HORROR</v-tab>
+          <v-tab :value="psy" :v-pre="showBooks('psy')">PSYCHOLOGY</v-tab>
+          <v-tab :value="phi" :v-pre="showBooks('phi')"
             >HISTORY & PHILOSOPHY</v-tab
           >
         </v-tabs>
@@ -121,6 +165,7 @@ export default {
   },
   data() {
     return {
+      notRendered: true,
       tab: null,
     };
   },
