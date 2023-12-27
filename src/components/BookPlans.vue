@@ -63,7 +63,7 @@
         <v-window v-model="tab">
           <v-window-item value="horror">
             <v-card>
-              <v-card-text text-caption class="font-italic" v-if="tab === 0">
+              <v-card-text text-caption class="font-italic">
                 "Ghosts, vampires, aliens, zombies, family drama and so
                 on."</v-card-text
               >
@@ -78,7 +78,7 @@
                     <v-card :href="'https://openlibrary.org/' + item.full_url">
                       <v-img
                         :src="item.picture.url.replace('S.jpg', 'M.jpg')"
-                        height="200"
+                        aspect-ratio="4/3"
                         cover
                       >
                       </v-img>
@@ -90,7 +90,7 @@
           </v-window-item>
           <v-window-item value="psy">
             <v-card>
-              <v-card-text text-caption class="font-italic" v-if="tab === 1">
+              <v-card-text text-caption class="font-italic">
                 "Critical psychology, demedicalization and psychoanalytic
                 ideas."</v-card-text
               >
@@ -105,7 +105,7 @@
                     <v-card :href="'https://openlibrary.org/' + item.full_url">
                       <v-img
                         :src="item.picture.url.replace('S.jpg', 'M.jpg')"
-                        height="200"
+                        aspect-ratio="4/3"
                         cover
                       >
                       </v-img>
@@ -118,7 +118,7 @@
 
           <v-window-item value="phi">
             <v-card>
-              <v-card-text text-caption class="font-italic" v-if="tab === 2">
+              <v-card-text text-caption class="font-italic">
                 "Historical processes and the way we see the
                 world."</v-card-text
               >
@@ -133,7 +133,7 @@
                     <v-card :href="'https://openlibrary.org/' + item.full_url">
                       <v-img
                         :src="item.picture.url.replace('S.jpg', 'M.jpg')"
-                        height="200"
+                        aspect-ratio="4/3"
                         cover
                       >
                       </v-img>
