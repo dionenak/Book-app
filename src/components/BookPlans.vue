@@ -78,7 +78,6 @@
                     <v-card :href="'https://openlibrary.org/' + item.full_url">
                       <v-img
                         :src="item.picture.url.replace('S.jpg', 'M.jpg')"
-                        aspect-ratio="4/3"
                         cover
                       >
                       </v-img>
