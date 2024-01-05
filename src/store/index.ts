@@ -21,15 +21,12 @@ export default createStore({
         state.phi = payload.data;
       }
     },
-    setTheme(state, payload) {
-      state.theme = payload;
-    },
   },
   actions: {
     async getBooks({ state, commit }, theme) {
       try {
         const response = await axios.get(
-          `${state.apiUrl}` + themesToUniqueIds[theme].title + "/seeds.json"
+          `${state.apiUrl}` + themesInfo[theme].title + "/seeds.json"
         );
         commit("setBooks", { theme, data: response.data.entries });
       } catch (error) {
@@ -42,19 +39,34 @@ export default createStore({
 
 type ThemeToUniqueIdsType = {
   [themeType in string]: {
+    name: "horror" | "phi" | "psy";
     title: string;
+    publicTitle: string;
+    image: string;
   };
 };
-export const themesToUniqueIds: ThemeToUniqueIdsType = {
+export const themesInfo: ThemeToUniqueIdsType = {
   horror: {
+    name: "horror",
+    publicTitle: "HORROR",
     title: "OL240812L",
+    image:
+      "https://ia801401.us.archive.org/view_archive.php?archive=/32/items/l_covers_0008/l_covers_0008_56.tar&file=0008569292-L.jpg",
   },
   psy: {
+    name: "psy",
+    publicTitle: "PSYCHOLOGY",
     title: "OL240813L",
+    image:
+      "https://ia800602.us.archive.org/view_archive.php?archive=/29/items/olcovers648/olcovers648-L.zip&file=6480546-L.jpg",
   },
   phi: {
+    name: "phi",
+    publicTitle: "HISTORY & PHILOSOPHY",
     title: "OL240814L",
+    image:
+      "https://ia804703.us.archive.org/view_archive.php?archive=/9/items/l_covers_0012/l_covers_0012_68.zip&file=0012680311-L.jpg",
   },
 } as const;
 
-export const themes: string[] = Object.keys(themesToUniqueIds);
+export const themes: string[] = Object.keys(themesInfo);
