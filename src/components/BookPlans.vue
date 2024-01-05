@@ -136,10 +136,6 @@ export default {
     };
   },
   methods: {
-    setTab(tabMentioned) {
-      console.log(this);
-      this.tab = this[tabMentioned];
-    },
     showBooks(plan) {
       if (this.$store.state.books.length < 1)
         this.$store.dispatch("getBooks", plan);
