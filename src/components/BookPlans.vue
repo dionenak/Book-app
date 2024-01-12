@@ -28,82 +28,33 @@
         </div>
       </v-tabs>
       <v-window v-model="tab">
-        <v-window-item value="horror">
-          <v-card>
-            <v-card-text text-caption class="font-italic">
-              {{ themesInfo[0].description }}</v-card-text
-            >
-            <v-container fluid>
-              <v-row>
-                <v-col
-                  v-for="item in horrorBooks"
-                  :key="item.title"
-                  :title="item.title"
-                  :cols="2"
-                >
-                  <v-card :href="'https://openlibrary.org/' + item.full_url">
-                    <v-img
-                      :src="item.picture.url.replace('S.jpg', 'M.jpg')"
-                      cover
-                    >
-                    </v-img>
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-card>
-        </v-window-item>
-        <v-window-item value="psy">
-          <v-card>
-            <v-card-text text-caption class="font-italic">
-              {{ themesInfo[1].description }}</v-card-text
-            >
-            <v-container fluid>
-              <v-row>
-                <v-col
-                  v-for="item in psyBooks"
-                  :key="item.title"
-                  :title="item.title"
-                  :cols="2"
-                >
-                  <v-card :href="'https://openlibrary.org/' + item.full_url">
-                    <v-img
-                      :src="item.picture.url.replace('S.jpg', 'M.jpg')"
-                      cover
-                    >
-                    </v-img>
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-card>
-        </v-window-item>
-
-        <v-window-item value="phi">
-          <v-card>
-            <v-card-text text-caption class="font-italic">
-              {{ themesInfo[2].description }}</v-card-text
-            >
-            <v-container fluid>
-              <v-row>
-                <v-col
-                  v-for="item in phiBooks"
-                  :key="item.title"
-                  :title="item.title"
-                  :cols="2"
-                >
-                  <v-card :href="'https://openlibrary.org/' + item.full_url">
-                    <v-img
-                      :src="item.picture.url.replace('S.jpg', 'M.jpg')"
-                      cover
-                    >
-                    </v-img>
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-card>
-        </v-window-item>
+        <div v-for="theme in themesInfo" :key="theme" :value="theme.name">
+          <v-window-item :value="theme.name">
+            <v-card>
+              <v-card-text text-caption class="font-italic">
+                {{ theme.description }}</v-card-text
+              >
+              <v-container fluid>
+                <v-row>
+                  <v-col
+                    v-for="item in getBooks(theme.name)"
+                    :key="item.title"
+                    :title="item.title"
+                    :cols="2"
+                  >
+                    <v-card :href="'https://openlibrary.org/' + item.full_url">
+                      <v-img
+                        :src="item.picture.url.replace('S.jpg', 'M.jpg')"
+                        cover
+                      >
+                      </v-img>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-window-item>
+        </div>
       </v-window>
     </v-card>
   </v-main>
@@ -113,17 +64,6 @@
 export default {
   name: "BookPlans",
   props: ["themesInfo"],
-  computed: {
-    horrorBooks() {
-      return this.$store.state.horror;
-    },
-    psyBooks() {
-      return this.$store.state.psy;
-    },
-    phiBooks() {
-      return this.$store.state.phi;
-    },
-  },
   data() {
     return {
       rendered: false,
@@ -134,6 +74,14 @@ export default {
     showBooks(plan) {
       if (this.$store.state.books.length < 1)
         this.$store.dispatch("getBooks", plan);
+    },
+    getBooks(theme) {
+      if (theme === "horror") {
+        return this.$store.state.horror;
+      } else if (theme === "psy") {
+        return this.$store.state.psy;
+      }
+      return this.$store.state.phi;
     },
   },
 };
