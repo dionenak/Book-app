@@ -1,24 +1,21 @@
 <template>
   <div v-show="!rendered" class="pt-8">
-    <v-row
-      align="center"
-      justify="center"
-      v-for="item in themesInfo"
-      :key="item"
-    >
-      <v-card>
-        <v-img
-          cover
-          height="500"
-          width="304"
-          v-on:click="
-            tab = item.name;
-            rendered = !rendered;
-          "
-          :src="item.image"
-        >
-        </v-img>
-      </v-card>
+    <v-row align="center" justify="center">
+      <div v-for="item in themesInfo" :key="item">
+        <v-card>
+          <v-img
+            cover
+            height="500"
+            width="304"
+            v-on:click="
+              tab = item.name;
+              rendered = !rendered;
+            "
+            :src="item.image"
+          >
+          </v-img>
+        </v-card>
+      </div>
     </v-row>
   </div>
   <v-main v-show="rendered">
@@ -34,8 +31,7 @@
         <v-window-item value="horror">
           <v-card>
             <v-card-text text-caption class="font-italic">
-              "Ghosts, vampires, aliens, zombies, family drama and so
-              on."</v-card-text
+              {{ themesInfo[0].description }}</v-card-text
             >
             <v-container fluid>
               <v-row>
@@ -60,8 +56,7 @@
         <v-window-item value="psy">
           <v-card>
             <v-card-text text-caption class="font-italic">
-              "Critical psychology, demedicalization and psychoanalytic
-              ideas."</v-card-text
+              {{ themesInfo[1].description }}</v-card-text
             >
             <v-container fluid>
               <v-row>
@@ -87,7 +82,7 @@
         <v-window-item value="phi">
           <v-card>
             <v-card-text text-caption class="font-italic">
-              "Historical processes and the way we see the world."</v-card-text
+              {{ themesInfo[2].description }}</v-card-text
             >
             <v-container fluid>
               <v-row>

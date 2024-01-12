@@ -42,6 +42,7 @@ type ThemeToUniqueIdsType = {
     name: "horror" | "phi" | "psy";
     title: string;
     publicTitle: string;
+    description: string;
     image: string;
   };
 };
@@ -50,6 +51,7 @@ export const themesInfo: ThemeToUniqueIdsType = {
     name: "horror",
     publicTitle: "HORROR",
     title: "OL240812L",
+    description: "Ghosts, vampires, aliens, zombies, family drama and so on.",
     image:
       "https://ia801401.us.archive.org/view_archive.php?archive=/32/items/l_covers_0008/l_covers_0008_56.tar&file=0008569292-L.jpg",
   },
@@ -57,6 +59,8 @@ export const themesInfo: ThemeToUniqueIdsType = {
     name: "psy",
     publicTitle: "PSYCHOLOGY",
     title: "OL240813L",
+    description:
+      "Critical psychology, demedicalization and psychoanalytic ideas.",
     image:
       "https://ia800602.us.archive.org/view_archive.php?archive=/29/items/olcovers648/olcovers648-L.zip&file=6480546-L.jpg",
   },
@@ -64,6 +68,7 @@ export const themesInfo: ThemeToUniqueIdsType = {
     name: "phi",
     publicTitle: "HISTORY & PHILOSOPHY",
     title: "OL240814L",
+    description: "Historical processes and the way we see the world.",
     image:
       "https://ia804703.us.archive.org/view_archive.php?archive=/9/items/l_covers_0012/l_covers_0012_68.zip&file=0012680311-L.jpg",
   },
