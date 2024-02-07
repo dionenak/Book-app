@@ -9,8 +9,6 @@
 </template>
 
 <script>
-//Our navigation will have to work on many different screen sizes.
-//For medium and large screens we will be using the Vuetify <v-toolbar> component.
 export default {
   name: "AppNavigation",
 };
