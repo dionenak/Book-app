@@ -1,29 +1,15 @@
 # books-app
+An SPA with my favorite books, grouped by genre.
+Vuejs and vuetify were used.
 
-## Project setup
+### <u>How to run the server</u>
+In order to install all packages, you have to use:
+```sh
+yarn
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
+Then, in order to run the server, you have to use:
+```sh
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The website can be found in: [http://localhost:8080/](http://localhost:8080/) .
