@@ -5,7 +5,6 @@ export default createStore({
   state: {
     theme: "",
     horror: [],
-    books: [],
     psy: [],
     phi: [],
     apiUrl: "http://openlibrary.org/people/diodioadio/lists/",

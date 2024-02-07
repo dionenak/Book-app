@@ -1,17 +1,17 @@
 <template>
   <div v-show="!rendered" class="pt-8">
     <v-row align="center" justify="center">
-      <div v-for="item in themesInfo" :key="item">
+      <div v-for="theme in themesInfo" :key="theme">
         <v-card>
           <v-img
             cover
             height="500"
             width="304"
             v-on:click="
-              tab = item.name;
+              tab = theme.name;
               rendered = !rendered;
             "
-            :src="item.image"
+            :src="theme.image"
           >
           </v-img>
         </v-card>
@@ -21,9 +21,9 @@
   <v-main v-show="rendered">
     <v-card>
       <v-tabs v-model="tab" bg-color="pink-lighten-5">
-        <div v-for="item in themesInfo" :key="item">
-          <v-tab :value="item.name" :v-pre="showBooks(item.name)">{{
-            item.publicTitle
+        <div v-for="theme in themesInfo" :key="theme">
+          <v-tab :value="theme.name" :v-pre="showBooks(theme.name)">{{
+            theme.publicTitle
           }}</v-tab>
         </div>
       </v-tabs>
@@ -37,14 +37,14 @@
               <v-container fluid>
                 <v-row>
                   <v-col
-                    v-for="item in getBooks(theme.name)"
-                    :key="item.title"
-                    :title="item.title"
+                    v-for="theme in getBooks(theme.name)"
+                    :key="theme.title"
+                    :title="theme.title"
                     :cols="2"
                   >
-                    <v-card :href="'https://openlibrary.org/' + item.full_url">
+                    <v-card :href="'https://openlibrary.org/' + theme.full_url">
                       <v-img
-                        :src="item.picture.url.replace('S.jpg', 'M.jpg')"
+                        :src="theme.picture.url.replace('S.jpg', 'M.jpg')"
                         cover
                       >
                       </v-img>
@@ -71,9 +71,9 @@ export default {
     };
   },
   methods: {
-    showBooks(plan) {
-      if (this.$store.state.books.length < 1)
-        this.$store.dispatch("getBooks", plan);
+    showBooks(theme) {
+      if (this.$store.state[theme].length < 1)
+        this.$store.dispatch("getBooks", theme);
     },
     getBooks(theme) {
       if (theme === "horror") {
